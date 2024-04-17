@@ -1,0 +1,17 @@
+{
+    "name": "wordcount",
+    "version": "1.0.0",
+    "description": "A command-line application for counting words in a file",
+    "main": "src/wordcount.js",
+    "scripts": {
+        "start": "node src/wordcount.js"
+    },
+    "author": "Nilesh Patwardhan",
+    "license": "MIT",
+    "dependencies": {
+        "winston": "^3.13.0"
+    },
+    "devDependencies": {
+        "jest": "^29.7.0"
+    }
+}
