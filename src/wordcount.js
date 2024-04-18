@@ -35,13 +35,20 @@ function wordCount(filePath) {
             wordCountMap.set(word, count + 1);
         }
         // Sort words by occurrence count in descending order
-        const sortedWordCount = Array.from(wordCountMap).sort((a, b) => b[1] - a[1]);
-        
+        //const sortedWordCount = Array.from(wordCountMap).sort((a, b) => b[1] - a[1]);
+        const sortedWordCount = Array.from(wordCountMap).sort((a, b) => {
+            if(a[1] !== b[1]){
+                return b[1] - a[1];
+            }
+
+        //sort alphabetically - The results should be consistent between two files which contain the exact same words in the same frequency but in a different order
+            return a[0].localeCompare(b[0]);
+        });
         // Print sorted word count
         sortedWordCount.forEach(([word, count]) => {
             console.log(`${word}: ${count}`);
         });
-        //console.log(sortedWordCount);
+        
     } catch (err) {
         logger.error(`Error: ${err.message}`);
     }
