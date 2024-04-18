@@ -34,18 +34,9 @@ function wordCount(filePath) {
             const count = wordCountMap.get(word) || 0;
             wordCountMap.set(word, count + 1);
         }
-        //console.log(wordCountMap);
         // Sort words by occurrence count in descending order
         const sortedWordCount = Array.from(wordCountMap).sort((a, b) => b[1] - a[1]);
-        //const sortedMap = new Map(sortedArray);
-        //console.log(sortedWordCount); 
-
         
-        // const sortedWordCount = [...wordCountMap.entries()];
-        // sortedWordCount.sort((a, b) => {
-        //     b[1] - a[1];   
-        // });
-
         // Print sorted word count
         sortedWordCount.forEach(([word, count]) => {
             console.log(`${word}: ${count}`);
