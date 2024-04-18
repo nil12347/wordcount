@@ -15,6 +15,14 @@ const logger = createLogger({
     ]
 });
 
+function sanitizeText(text) {
+    
+    // Remove punctuation marks (replace with whitespace)
+    return text.replace(/[^\w\s]/g, ' ');
+    //return text.replace(/[^\w\s](?!\s)/g, ' ').replace(/[^\w\s]/g, ' ');
+    
+}
+
 function wordCount(filePath) {
     try {
         // Check if file exists
@@ -25,8 +33,11 @@ function wordCount(filePath) {
         // Read file contents
         const fileContents = fs.readFileSync(filePath, 'utf-8');
         
+        // Sanitize text by removing punctuation
+        const sanitizedText = sanitizeText(fileContents);
+
         // Tokenize contents into words
-        const words = fileContents.toLowerCase().split(/\s+/);
+        const words = sanitizedText.toLowerCase().split(/\s+/);
 
         // Count occurrences of each word
         const wordCountMap = new Map();
